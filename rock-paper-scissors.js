@@ -7,15 +7,23 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+    console.log(`Computer chooses ${computerSelection}!`)
+    console.log(`You choose ${playerSelection}!`);
+
+    if (playerSelection === computerSelection) {
+        console.log("It's a tie! Starting another round...")
+        return playRound(playerSelection, getComputerChoice());
+    }
+
     if ((playerSelection === 'rock' && computerSelection === 'scissors') || 
     (playerSelection === 'paper' && computerSelection === 'rock') || 
     (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        return `You win! ${playerSelection} beats ${computerSelection}!`;
-    } else if ((playerSelection === 'rock' && computerSelection === 'paper') ||
-    (playerSelection === 'paper' && computerSelection === 'scissors') ||
-    (playerSelection === 'scissors' && computerSelection === 'rock')) {
-        return `You lose! ${computerSelection} beats ${playerSelection}!`;
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     } else {
-        return `It's a tie! Both users chose ${playerSelection}!`;
+        return `You win! ${playerSelection} beats ${computerSelection}!`;
     }
 }
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
