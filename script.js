@@ -29,29 +29,40 @@ function game() {
     for (let i = 1; i <= n; i++) {
         const computerSelection = getComputerChoice();
         let playerSelection = askForInput();
+
+        if (playerSelection === null) {
+            console.log("Game cancelled.");
+            break;
+        }
+
         while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
             console.log("Invalid input!");
             playerSelection = askForInput();
         }
+
         const result = playRound(playerSelection, computerSelection);
         console.log(result);
+
         if (result.includes("You win")) {
             playerScore++;
         } else {
             computerScore++;
         }
     }
+
     console.log(`Your score: ${playerScore}`);
     console.log(`Computer score: ${computerScore}`);
+
     if (playerScore > computerScore) {
         console.log(`Congratulations, you win the game!`);
-    } else {
+    } else if (computerScore > playerScore) {
         console.log(`Aww, you lose the game! Better luck next time!`);
     }
 }
 
 function askForInput() {
-    return prompt('Choose one: rock, paper or scissors?', "").toLowerCase();
+    const input = prompt('Choose one: rock, paper or scissors?', "");
+    return input !== null ? input.toLowerCase() : null;
 }
 
 game();
