@@ -8,11 +8,10 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     console.log(`You choose: ${playerSelection}!`);
     console.log(`Computer chooses: ${computerSelection}!`);
-    playerSelection = playerSelection.toLowerCase();
 
     if ((computerSelection === playerSelection)) {
         console.log("It's a tie! Let's play another round...");
-        return playRound(prompt(`Choose again: rock, paper or scissors?`,"").toLowerCase(), getComputerChoice());
+        return playRound(askForInput(), getComputerChoice());
     } else if ((computerSelection === 'rock' && playerSelection === 'paper') ||
     (computerSelection === 'paper' && playerSelection === 'scissors') ||
     (computerSelection === 'scissors' && playerSelection === 'rock')) {
@@ -25,20 +24,21 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let computerScore = 0;
     let playerScore = 0;
+    const n = 5;
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= n; i++) {
         const computerSelection = getComputerChoice();
-        let playerSelection = prompt("What is your choice: rock, paper or scissors?", "");
-        playerSelection = playerSelection.toLowerCase();
+        let playerSelection = askForInput();
         while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-            playerSelection = prompt(`Invalid input! Please carefully choose again: rock, paper or scissors?`,"").toLowerCase();
+            console.log("Invalid input!");
+            playerSelection = askForInput();
         }
         const result = playRound(playerSelection, computerSelection);
         console.log(result);
-        if (result.indexOf('You win') === -1) {
-            computerScore++;
-        } else {
+        if (result.includes("You win")) {
             playerScore++;
+        } else {
+            computerScore++;
         }
     }
     console.log(`Your score: ${playerScore}`);
@@ -48,6 +48,10 @@ function game() {
     } else {
         console.log(`Aww, you lose the game! Better luck next time!`);
     }
+}
+
+function askForInput() {
+    return prompt('Choose one: rock, paper or scissors?', "").toLowerCase();
 }
 
 game();
