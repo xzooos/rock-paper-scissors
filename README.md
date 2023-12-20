@@ -1,2 +1,3 @@
 # rock-paper-scissors
-Will revisit the game again to add interface after learning about DOM Manipulation.
+My Rock-Paper-Scissors game project, now reworked with a very simple UI.
+Will revisit sometime in the future when I'm very comfortable with JavaScript.
