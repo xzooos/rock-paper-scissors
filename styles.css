@@ -11,7 +11,7 @@
 
 .header {
     background-color: #DCF2F1;
-    padding: 50px;
+    padding: 55px 0px;
     font-size: 60px;
     font-weight: 600;
     display: flex;
@@ -24,15 +24,15 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
-    padding: 20px 0;
+    padding: 50px 0;
     background-color: #7FC7D9;
     height: 350px;
 }
 
 img {
-    width: 235px;
+    width: 240px;
     height: auto;
-    border: 3px solid black;
+    border: 4px solid black;
     border-radius: 50%;
 }
 
@@ -44,8 +44,9 @@ img {
     display: flex;
     justify-content: center;
     gap: 80px;
+    padding: 20px 0;
     font-size: 40px;
-    height: 200px;
+    height: 150px;
 }
 
 #playerScoreContainer, #computerScoreContainer {
@@ -61,21 +62,31 @@ img {
 }
 
 #resultContainer {
-    font-size: 35px;
-    padding: 20px 0;
+    font-size: 37px;
+    padding: 30px 0;
+    color: #DCF2F1;
 }
 
 #displayWinner {
     font-size: 40px;
-    padding: 15px 0 30px;
+    padding: 25px 0 35px;
+    color: #DCF2F1;
+}
+
+.reset-button {
+    padding: 12px 18px;
+    margin-left: 30px;
+    font-size: 20px;
+    border-radius: 12px;
+    background-color: #DCF2F1;
 }
 
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 0;
-    font-size: 30px;
+    padding: 20px 0;
+    font-size: 22px;
     background-color: #0F1035;
-    color: whitesmoke;
+    color: #DCF2F1;
 }

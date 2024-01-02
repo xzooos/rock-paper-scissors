@@ -24,6 +24,9 @@ const playerScoreContainer = document.querySelector('#playerScoreContainer');
 const computerScoreContainer = document.querySelector('#computerScoreContainer');
 const resultContainer = document.querySelector('#resultContainer');
 const displayWinner = document.querySelector('#displayWinner');
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Play again?';
+resetButton.classList.add('reset-button');
 
 let computerScore = 0;
 let playerScore = 0;
@@ -49,7 +52,11 @@ function buttonClicked(event) {
     computerScoreContainer.textContent = `Computer: ${computerScore}`;
     resultContainer.textContent = result;
 
-    if (computerScore === 5 || playerScore === 5) checkWinner();
+    if (computerScore === 5 || playerScore === 5) {
+        checkWinner();
+        removeEvents();
+        displayWinner.appendChild(resetButton);
+    }
 }
 
 function checkWinner() {
@@ -58,9 +65,30 @@ function checkWinner() {
     } else if (computerScore > playerScore) {
         displayWinner.textContent = 'Aww, Player loses! Computer wins the game!';
     }
-    playerScore = 0; computerScore = 0;
 }
 
-rock.addEventListener('click', buttonClicked);
-paper.addEventListener('click', buttonClicked);
-scissors.addEventListener('click', buttonClicked);
+function removeEvents() {
+    rock.removeEventListener('click', buttonClicked);
+    paper.removeEventListener('click', buttonClicked);
+    scissors.removeEventListener('click', buttonClicked);
+}
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreContainer.textContent = 'Player: 0';
+    computerScoreContainer.textContent = 'Computer: 0';
+    resultContainer.textContent = '';
+    displayWinner.textContent = '';
+    addClickEvents();
+}
+
+function addClickEvents() {
+    rock.addEventListener('click', buttonClicked);
+    paper.addEventListener('click', buttonClicked);
+    scissors.addEventListener('click', buttonClicked);
+}
+
+addClickEvents();
+
+resetButton.addEventListener('click', resetGame);
