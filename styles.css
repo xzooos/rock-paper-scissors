@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 50px;
+    font-size: 55px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 35px;
+}
+
+img {
+    width: 220px;
+    height: auto;
+}
